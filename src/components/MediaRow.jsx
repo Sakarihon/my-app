@@ -1,5 +1,7 @@
-import SingleView from "./SingleView";
- const MediaRow = ({item,setSelectedItem}) => {
+
+import { Link } from "react-router-dom";
+
+ const MediaRow = ({item}) => {
    return (
     <tr>
       <td>
@@ -12,7 +14,9 @@ import SingleView from "./SingleView";
                <td>{item.filesize}</td>
                <td>{item.media_type}</td>
                <td>
-                <button onClick={()=> setSelectedItem(item)}>Open</button>
+                <Link to ="/single" state={{item}}>
+                Open
+                </Link>
                </td>
              </tr>
 

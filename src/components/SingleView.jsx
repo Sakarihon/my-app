@@ -1,10 +1,13 @@
-
+import { Link } from "react-router-dom";
  const SingleView = props=> {
    const {item, setSelectedItem} =props
 
    if (!item) return null;
    return (
-    <dialog open={!!item}>
+    <Link to="/single" state={{ item }}>
+      Open
+
+
     <h2> {item.title}</h2>
 
     {item.media_type.startsWith("video") ? (
@@ -15,7 +18,7 @@
         <p>{item.description}</p>
         <button onClick={()=> setSelectedItem(null)}>Close</button>
 
-    </dialog>
+        </Link>
    );
  };
 export default SingleView
