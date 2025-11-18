@@ -1,0 +1,35 @@
+[
+  {
+    "media_id": 1,
+    "user_id": 1,
+    "filename": "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4",
+    "thumbnail": "https://placehold.co/320x240?text=Thumb1",
+    "filesize": 1236616,
+    "media_type": "video/mp4",
+    "title": "BIG BUCK BUNNY",
+    "description": "Big Buck Bunny is a short computer-animated comedy film by the Blender Institute...",
+    "created_at": "2024-01-07T20:48:13.000Z"
+  },
+  {
+    "media_id": 2,
+    "user_id": 1,
+    "filename": "https://placehold.co/1200x800?text=Pic1",
+    "thumbnail": "https://placehold.co/320x240?text=Thumb2",
+    "filesize": 170469,
+    "media_type": "image/jpeg",
+    "title": "Image 1",
+    "description": "Placeholder technology is a placeholder for technology that is not yet available.",
+    "created_at": "2024-01-07T20:49:34.000Z"
+  },
+  {
+    "media_id": 3,
+    "user_id": 2,
+    "filename": "https://placehold.co/800x600?text=Pic2",
+    "thumbnail": "https://placehold.co/320x240?text=Thumb3",
+    "filesize": 1002912,
+    "media_type": "image/jpeg",
+    "title": "Image 2",
+    "description": "Another placeholder image description. This one is a bit shorter.",
+    "created_at": "2024-01-07T21:32:27.000Z"
+  }
+]
