@@ -4,6 +4,7 @@
  import Profile from './views/Profile';
  import Single from './views/Single';
  import Upload from './views/Upload';
+ import Pizzas from './views/Pizzas';
 
 
  const App = () => {
@@ -15,6 +16,8 @@
            <Route path="/profile" element={<Profile />} />
            <Route path="/single" element={<Single />} />
            <Route path="/upload" element={<Upload />} />
+            <Route path="/pizzas" element={<Pizzas />} />
+
            {/* TODO: add missing routes */}
          </Route>
        </Routes>
