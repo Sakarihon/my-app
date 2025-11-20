@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import MediaRow from "../components/MediaRow";
 import { fetchData } from "../utils/fetchData";
 
+const MEDIA_API=import.meta.env.VITE_MEDIA_API + '/media'
+const AUTH_API=import.meta.env.VITE_AUTH_API + '/users/'
 
 const Home = () => {
 
@@ -10,8 +12,18 @@ const [mediaArray, setMediaArray] = useState([]);
 useEffect(() => {
 const getMedia = async () => {
   try{
-    const json = await fetchData('test.json');
-    setMediaArray(json);
+    const mediaData = await fetchData(MEDIA_API);
+
+    const newArray = await Promise.all(
+      mediaData.map(async (item) => {
+     const user = await fetchData(AUTH_API + item.user_id);
+     console.log(user)
+     return {...item, username: user.username};
+    }));
+
+    console.log(newArray);
+
+    setMediaArray(newArray);
  } catch(err){
   console.error("failed to fetch media",err)
  }

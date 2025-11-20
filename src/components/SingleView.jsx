@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
         <img src={item.filename} alt={item.title} width="600" />
       )}
         <p>{item.description}</p>
+      
         <button onClick={()=> setSelectedItem(null)}>Close</button>
 
         </Link>
