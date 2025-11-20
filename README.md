@@ -1,6 +1,6 @@
 #Routing assignment
 
-Open [link text here](https://users.metropolia.fi/~sakariho/wsk-routing/) to view it in the browser.
+Open [link text here](https://users.metropolia.fi/~sakariho/hooks/) to view it in the browser.
 
 # React + Vite
 
