@@ -1,20 +1,17 @@
 import { useState, useEffect } from "react";
 import { fetchData } from "../utils/fetchData";
 
-// TODO: add necessary imports
 
 const MEDIA_API=import.meta.env.VITE_MEDIA_API + '/media'
 const AUTH_API=import.meta.env.VITE_AUTH_API + '/users/'
 
 const useMedia = () => {
-// TODO: move mediaArray state here
 const [mediaArray, setMediaArray] = useState([]);
-// TODO: move getMedia function here
+
 useEffect(() => {
 const getMedia = async () => {
   try{
     const mediaData = await fetchData(MEDIA_API);
-
     const newArray = await Promise.all(
       mediaData.map(async (item) => {
      const user = await fetchData(AUTH_API + item.user_id);
@@ -35,8 +32,67 @@ const getMedia = async () => {
 useEffect(() => {
     console.log("Media array updated:", mediaArray);
   }, [mediaArray]);
-// TODO: move useEffect here
 return {mediaArray};
 };
 
-export {useMedia};
+
+
+const useAuthentication = ()=>{
+const postLogin = async (inputs) => {
+   const fetchOptions = {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json',
+     },
+     body: JSON.stringify(inputs),
+   };
+   const loginResult = await fetchData(import.meta.env.VITE_AUTH_API + '/auth/login', fetchOptions);
+   return loginResult;
+ };
+return {postLogin}}
+
+const useUser = ()=>{
+const getUserByToken=async (token)=> {
+
+  try {
+      if (!token) throw new Error("No token found");
+
+      const userData = await fetchData(import.meta.env.VITE_AUTH_API + "/users/token", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+
+      return userData;
+      } catch (err) {
+            console.error("getUserByToken error:", err.message);
+            throw err;
+          }
+        };
+
+const postUser = async (inputs) => {
+    try {
+      const fetchOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs),
+      };
+      const result = await fetchData(
+        import.meta.env.VITE_AUTH_API + "/users",
+        fetchOptions
+      );
+      return result;
+    } catch (err) {
+      console.error("postUser error:", err);
+      throw err;
+    }
+  };
+
+  return { getUserByToken, postUser };
+};
+
+
+
+export {useMedia,useAuthentication,useUser};

@@ -5,6 +5,8 @@
  import Single from './views/Single';
  import Upload from './views/Upload';
  import Pizzas from './views/Pizzas';
+ import Login from './views/Login';
+ import Logout from './views/Logout';
 
 
  const App = () => {
@@ -17,6 +19,9 @@
            <Route path="/single" element={<Single />} />
            <Route path="/upload" element={<Upload />} />
             <Route path="/pizzas" element={<Pizzas />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+
 
            {/* TODO: add missing routes */}
          </Route>
