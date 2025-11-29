@@ -18,7 +18,6 @@ const {postLogin}=useAuthentication()
     try {
       const result = await postUser(inputs);
       console.log("Registered user:", result);
-      alert("result",result)
 
       const loginResult = await postLogin({
       username: inputs.username,
@@ -26,14 +25,15 @@ const {postLogin}=useAuthentication()
     });
       console.log("Login result:", loginResult);
       localStorage.setItem("token", loginResult.token);
-      window.location.href = "/";
+      alert("Registeration succesful")
+      window.location.href = "/~sakariho/Forms/";
     }
     catch(error){
       console.error("error", error)
       alert("registeration failed")
     }
   }
-  
+
   const {inputs, handleInputChange, handleSubmit} = useForm(doRegister, initValues);
 
     return (
@@ -59,7 +59,6 @@ const {postLogin}=useAuthentication()
       </label>
       </div>
 
-      //option,checkbox,radiobutton
       <button type="submit">Send data</button>
       </form>
       </>

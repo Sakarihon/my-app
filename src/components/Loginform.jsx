@@ -14,12 +14,11 @@ export default function Loginform() {
 
   const doLogin=async (inputs)=>{
     try {
-      alert(JSON.stringify(inputs, null, 2))
       const result=await postLogin(inputs)
       localStorage.setItem("token",result.token)
       console.log("result",result)
-      alert("result",result)
-      window.location.href = "/";
+      alert("login succesful")
+      window.location.href = "/~sakariho/Forms/";
     }
     catch(error){
       console.error("error", error)
