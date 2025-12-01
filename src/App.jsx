@@ -12,7 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter>
       <UserProvider>
         <Routes>
           <Route element={<Layout />}>
@@ -49,7 +49,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
 
-           
+
           </Route>
         </Routes>
       </UserProvider>

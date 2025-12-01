@@ -21,7 +21,7 @@ import { useLocation, useNavigate } from "react-router";
         console.log("result",result)
         setUser(result.user);
         alert("login succesful")
-        window.location.href = "/~sakariho/Context/";
+        window.location.href = "/";
       }
       catch(error){
         console.error("error", error)

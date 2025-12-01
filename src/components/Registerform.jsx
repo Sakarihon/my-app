@@ -26,7 +26,7 @@ const {postLogin}=useAuthentication()
       console.log("Login result:", loginResult);
       localStorage.setItem("token", loginResult.token);
       alert("Registeration succesful")
-      window.location.href = "/~sakariho/Context/";
+      window.location.href = "/";
     }
     catch(error){
       console.error("error", error)

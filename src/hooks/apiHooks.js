@@ -8,6 +8,34 @@ const AUTH_API=import.meta.env.VITE_AUTH_API + '/users/'
 const useMedia = () => {
 const [mediaArray, setMediaArray] = useState([]);
 
+const postMedia = async (fileData, inputs, token) => {
+  try {
+    const body = {
+      title: inputs.title,
+      description: inputs.description,
+      filename: fileData.data.filename,
+      media_type: fileData.data.media_type,
+      filesize: fileData.data.filesize,
+    };
+
+    const options = {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    };
+
+    const result = await fetchData(import.meta.env.VITE_MEDIA_API + "/media", options);
+    return result;
+  } catch (e) {
+    console.error("postMedia error:", e.message);
+    throw e;
+  }
+};
+
+
 useEffect(() => {
 const getMedia = async () => {
   try{
@@ -32,7 +60,7 @@ const getMedia = async () => {
 useEffect(() => {
     console.log("Media array updated:", mediaArray);
   }, [mediaArray]);
-return {mediaArray};
+return {mediaArray,postMedia};
 };
 
 
@@ -93,6 +121,36 @@ const postUser = async (inputs) => {
   return { getUserByToken, postUser };
 };
 
+const useFile = () => {
+
+  const postFile = async (file, token) => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const options = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      };
+
+      const result = await fetchData(
+        import.meta.env.VITE_UPLOAD_SERVER + "/upload",
+        options
+      );
+
+      return result;
+    } catch (e) {
+      console.error("postFile error:", e.message);
+      throw e;
+    }
+  };
+
+  return { postFile };
+};
 
 
-export {useMedia,useAuthentication,useUser};
+
+export {useMedia,useAuthentication,useUser,useFile};
