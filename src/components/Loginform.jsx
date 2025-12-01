@@ -1,12 +1,12 @@
 import React from 'react'
 import useForm from '../hooks/formHooks'
-import { useAuthentication } from '../hooks/apiHooks'
+import { useUserContext } from '../hooks/contextHooks'
 
 
 
 
 export default function Loginform() {
-  const {postLogin} =useAuthentication()
+  const {handleLogin} =useUserContext()
 
   const initValues={
       username:'', password:''
@@ -14,11 +14,7 @@ export default function Loginform() {
 
   const doLogin=async (inputs)=>{
     try {
-      const result=await postLogin(inputs)
-      localStorage.setItem("token",result.token)
-      console.log("result",result)
-      alert("login succesful")
-      window.location.href = "/~sakariho/Forms/";
+       await handleLogin(inputs)
     }
     catch(error){
       console.error("error", error)

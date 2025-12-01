@@ -52,8 +52,8 @@ const postLogin = async (inputs) => {
 return {postLogin}}
 
 const useUser = ()=>{
-const getUserByToken=async (token)=> {
-
+const getUserByToken=async ()=> {
+  const token =localStorage.getItem("token")
   try {
       if (!token) throw new Error("No token found");
 
